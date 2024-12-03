@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimercado Vilenuev</title>
+     <!-- Fontes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em;
+        }
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        h2, h3 {
+            text-align: center;
+            color: #4CAF50;
+            font-family: 'Poppins', sans-serif;
+        }
+        h3 {
+            color: #FFC107;
+            margin-bottom: 15px;
+        }
+            .carousel-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain; /* Mantém a proporção da imagem */
+            background-color: #f8f8f8; /* Fundo para imagens menores */
+        }
+        main {
+            padding: 20px;
+        }
+        .product-card, .service-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            text-align: center;
+            width: 250px;
+            display: inline-block;
+        }
+        .product-card img, .service-card img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .product-card button, .service-card button {
+            background-color: #FFC107;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .product-card button:hover, .service-card button:hover {
+            background-color: #E0A800;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #FFC107;
+            text-decoration: none;
+        }
+        .product-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Estilo do carrossel */
+    .carousel-inner img {
+        border-radius: 15px; /* Bordas arredondadas */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    /* Animação ao passar o mouse */
+    .carousel-inner img:hover {
+        transform: scale(1.05); /* Zoom leve */
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+    }
+
+       /* Estilo dos botões de navegação */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+        /* Estilo do texto acima das imagens */
+        .carousel-caption-top {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: white;
+        z-index: 10;
+    }
+
+    /* Destaque dos textos */
+    .highlight-text {
+        color: #FFC107;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+
+     /* Estilo do texto abaixo das imagens */
+     .carousel-caption-bottom {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+        padding: 15px 20px;
+        border-radius: 10px;
+        color: white;
+        margin-top: -10px;
+    }
+
+    /* Destaque dos textos */
+    .highlight-text {
+        color: #FFC107;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Botões de navegação */
+    .carousel-buttons button {
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .carousel-buttons button:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    /* Imagens com sombra e bordas arredondadas */
+    .carousel-inner img {
+        border-radius: 15px; /* Bordas arredondadas */
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+    }
+    </style>
+</head>
+<body>
+
+<!-- Cabeçalho -->
+<header style="background-color: #4CAF50; color: white; padding: 20px; text-align: center; position: relative;">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 15px;">
+        <img src="logo.svg" alt="Logo Minimercado Vilenuev" style="height: 60px; border-radius: 10px;">
+        <h1 style="font-family: 'Poppins', sans-serif; font-size: 2.5em; margin: 0;">Minimercado Vilenuev</h1>
+    </div>
+    <nav style="margin-top: 10px;">
+        <a href="#produtos" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 500;">Produtos</a>
+        <a href="#servicos" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 500;">Serviços</a>
+        <a href="#contato" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 500;">Contato</a>
+        <a href="cadastro_cliente.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: 500;">Cadastro de Cliente</a>
+    </nav>
+</header>
+
+<!-- Carrossel -->
+<section id="carousel" class="my-5 p-4" style="background-color: #f0f0f0; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h2 class="text-center" style="color: #4CAF50;">Destaques</h2>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="fruta1.webp" class="d-block w-100 rounded shadow" alt="Frutas em destaque">
+                <div class="carousel-caption-bottom text-center">
+                    <h5 class="highlight-text">Frutas Frescas</h5>
+                    <p>Confira nossa seleção de frutas frescas e saudáveis.</p>
+                    <!-- Botões de navegação -->
+                    <div class="carousel-buttons">
+                        <button class="btn btn-light me-2" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">Anterior</button>
+                        <button class="btn btn-light ms-2" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">Próximo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="higiene1.webp" class="d-block w-100 rounded shadow" alt="Produtos de higiene">
+                <div class="carousel-caption-bottom text-center">
+                    <h5 class="highlight-text">Produtos de Higiene</h5>
+                    <p>Qualidade e cuidado para o seu dia a dia.</p>
+                    <!-- Botões de navegação -->
+                    <div class="carousel-buttons">
+                        <button class="btn btn-light me-2" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">Anterior</button>
+                        <button class="btn btn-light ms-2" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">Próximo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="limpeza1.webp" class="d-block w-100 rounded shadow" alt="Produtos de limpeza">
+                <div class="carousel-caption-bottom text-center">
+                    <h5 class="highlight-text">Produtos de Limpeza</h5>
+                    <p>Deixe sua casa ainda mais limpa e organizada.</p>
+                    <!-- Botões de navegação -->
+                    <div class="carousel-buttons">
+                        <button class="btn btn-light me-2" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">Anterior</button>
+                        <button class="btn btn-light ms-2" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">Próximo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Corpo das Páginas -->
+    <main>
+        <!-- Seção de Produtos -->
+        <section id="produtos">
+            <h2>Nossos Produtos</h2>
+
+            <!-- Categoria: Frutas -->
+            <h3>Frutas</h3>
+            <div class="product-section">
+                <div class="product-card">
+                    <img src="fruta1.webp" alt="Maçã">
+                    <p>Maçã - <strong>R$3,00/unidade</strong></p>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="fruta2.webp" alt="Banana">
+                    <p>Banana - <strong>R$2,50/unidade</strong></p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+
+            <!-- Categoria: Verduras -->
+            <h3>Verduras</h3>
+            <div class="product-section">
+                <div class="product-card">
+                    <img src="verdura1.webp" alt="Alface">
+                    <p>Alface - <strong>R$2,00/unidade</strong></p>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="verdura2.webp" alt="Couve">
+                    <p>Couve - <strong>R$3,50/unidade</strong></p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+
+            <!-- Categoria: Produtos de Higiene -->
+            <h3>Produtos de Higiene</h3>
+            <div class="product-section">
+                <div class="product-card">
+                    <img src="higiene1.webp" alt="Sabonete">
+                    <p>Sabonete - <strong>R$1,50/unidade</strong></p>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="higiene2.webp" alt="Pasta de Dente">
+                    <p>Pasta de Dente - <strong>R$4,00</strong></p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+
+            <!-- Categoria: Produtos de Limpeza -->
+            <h3>Produtos de Limpeza</h3>
+            <div class="product-section">
+                <div class="product-card">
+                    <img src="limpeza1.webp" alt="Sabão em Pó">
+                    <p>Sabão em Pó - <strong>R$10,00</strong></p>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card">
+                    <img src="limpeza2.webp" alt="Desinfetante">
+                    <p>Desinfetante - <strong>R$8,00</strong></p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+<section id="servicos">
+    <h2>Nossos Serviços</h2>
+    <div class="product-section">
+        <div class="service-card">
+            <h3>Retirada no Local</h3>
+            <p>Faça seu pedido online e retire diretamente em nossa loja sem custos adicionais.</p>
+            <a href="agendamento_entrega.html?servico=retirada" class="btn btn-primary mt-2">Agendar Retirada</a>
+        </div>
+        <div class="service-card">
+            <h3>Tele-entrega</h3>
+            <p>Receba seus produtos no conforto da sua casa por uma taxa de entrega de R$5,00.</p>
+            <a href="agendamento_entrega.html?servico=teleEntrega" class="btn btn-primary mt-2">Agendar Entrega</a>
+
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer id="contato">
+        <p>&copy; 2024 Minimercado Vilenuev</p>
+        <p>Contato: <a href="mailto:contato@minimercadovilenuev.com">contato@minimercadovilenuev.com</a> | Telefone: (51) 9957-80251</p>
+        <nav>
+            <a href="#produtos">Produtos</a> |
+            <a href="#servicos">Serviços</a> |
+            <a href="#contato">Contato</a>
+        </nav>
+    </footer>
+
+</body>
+</html>
